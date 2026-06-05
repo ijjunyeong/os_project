@@ -1,2 +1,15 @@
 # os_project
-tiny, small, mini, cute os
+
+실행 환경
+QEMU emulator version 10.2.50 (setup-20260307.exe)
+NASM version 3.01
+
+실행 방법
+1. asm 파일 다운로드
+2. cmd 또는 shell 실행 후 cd 명령어로 다운로드한 파일 폴더로 이동
+4. "nasm -f bin 파일명.asm -o 파일명.bin"으로 boot, kernel 모두 .bin 파일 생성
+5. "copy /b 부트파일명.bin+커널파일명.bin os-image.bin"로 병합한 os-image.bin 파일 생성
+6. "qemu-system-i386 -drive format=raw,file=os-image.bin" qemu에서 os 파일 실행
+
+명령어
+help 등등( 업데이트예정)
