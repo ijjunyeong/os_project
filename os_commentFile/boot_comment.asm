@@ -5,21 +5,21 @@ KERNEL_OFFSET equ 0x1000
 KERNEL_SECTORS equ 8
 
 start:
-    ; ºÎÆÃ µå¶óÀÌºê ¹øÈ£ ÀúÀå
+    ; ë¶€íŒ… ë“œë¼ì´ë¸Œ ë²ˆí˜¸ ì €ìž¥
     mov [BOOT_DRIVE], dl
 
-    ; ¼¼±×¸ÕÆ®¿Í ½ºÅÃ ÃÊ±âÈ­
+    ; ì„¸ê·¸ë¨¼íŠ¸ì™€ ìŠ¤íƒ ì´ˆê¸°í™”
     xor ax, ax
     mov ds, ax
     mov es, ax
     mov ss, ax
     mov sp, 0x7C00
 
-    ; ºÎÆÃ ¸Þ½ÃÁö Ãâ·Â
+    ; ë¶€íŒ… ë©”ì‹œì§€ ì¶œë ¥
     mov si, boot_msg
     call print_string
 
-    ; µð½ºÅ©ÀÇ 2¹ø ¼½ÅÍ Ä¿³Î ÀÐ±â
+    ; ë””ìŠ¤í¬ì˜ 2ë²ˆ ì„¹í„° ì»¤ë„ ì½ê¸°
     mov ah, 0x02
     mov al, KERNEL_SECTORS
     mov ch, 0
@@ -29,19 +29,19 @@ start:
     mov bx, KERNEL_OFFSET
     int 0x13
 
-    ; ½ÇÆÐ½Ã ¿¡·¯ Ãâ·Â
+    ; ì‹¤íŒ¨ì‹œ ì—ëŸ¬ ì¶œë ¥
     jc disk_error
 
-    ; Ä¿³Î·Î ÀÌµ¿
+    ; ì»¤ë„ë¡œ ì´ë™
     jmp 0x0000:KERNEL_OFFSET
 
-; ¿¡·¯ ¸Þ¼¼Áö Ãâ·Â
+; ì—ëŸ¬ ë©”ì„¸ì§€ ì¶œë ¥
 disk_error: 
     mov si, error_msg
     call print_string
     jmp $
 
-; ¹®ÀÚ¿­ Ãâ·Â ÇÔ¼ö
+; ë¬¸ìžì—´ ì¶œë ¥ í•¨ìˆ˜
 print_string:
     lodsb
     cmp al, 0
@@ -57,7 +57,7 @@ BOOT_DRIVE db 0
 boot_msg db 'Booting TinyOS...', 13, 10, 0
 error_msg db 'Disk read error!', 13, 10, 0
 
-; ³²Àº °ø°£À» ¸ðµÎ 0À¸·Î Ã¤¿ò
+; ë‚¨ì€ ê³µê°„ì„ ëª¨ë‘ 0ìœ¼ë¡œ ì±„ì›€
 times 510-($-$$) db 0
-; ºÎÆ® ¸¶Áö¸·Àº 512byte
+; ë¶€íŠ¸ ë§ˆì§€ë§‰ì€ 512byte
 dw 0xAA55
