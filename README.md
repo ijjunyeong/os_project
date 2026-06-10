@@ -1,6 +1,5 @@
 # os_project
 
-## os_project
 부트로더 및 간단한 명령어 실행이 가능한 os
 
 ## 실행 환경
