@@ -12,9 +12,13 @@ NASM version 3.01
 6. "qemu-system-i386 -drive format=raw,file=os-image.bin" qemu에서 os 파일 실행
 
 명령어
+
 help : 명령어 목록
 
 clear : 모든 텍스트 삭제
+
 about : os에 대한 설명
+
 color : 텍스트 색상 변경
+
 reboot : 재부팅
