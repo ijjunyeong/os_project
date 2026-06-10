@@ -5,6 +5,7 @@
 
 ## 실행 환경
 QEMU emulator version 10.2.50 (setup-20260307.exe)
+
 NASM version 3.01
 
 ## 실행 방법
